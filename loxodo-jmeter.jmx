@@ -502,44 +502,1344 @@
           </hashTree>
           <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Inbound" enabled="true"/>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="InBound Request" enabled="true">
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-                <collectionProp name="Arguments.arguments"/>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/api/inrequest-v2/?warehouse_id=${warehouseId}&amp;status=0&amp;limit=0</stringProp>
-              <stringProp name="HTTPSampler.method">GET</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree/>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Receive task" enabled="true">
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-                <collectionProp name="Arguments.arguments"/>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain"></stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.protocol"></stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">/api/receive-tasks?warehouse_id=${warehouseId}</stringProp>
-              <stringProp name="HTTPSampler.method">GET</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree/>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Inbound Request" enabled="true"/>
+            <hashTree>
+              <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Add Inbound Request Delivery Requests" enabled="true"/>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Transportation Types " enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                    <collectionProp name="Arguments.arguments"/>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/api/transportation-types</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree/>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inbound Delivery Information" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">{&#xd;
+	&quot;ext_id&quot;: &quot;${inboundCreateDelivery}&quot;,&#xd;
+	&quot;po_id&quot;: &quot;${inboundCreateDelivery}&quot;,&#xd;
+	&quot;warehouse_id&quot;: &quot;${warehouseId}&quot;&#xd;
+}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/api/inrequest/validate-idr</stringProp>
+                  <stringProp name="HTTPSampler.method">PUT</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+                    <stringProp name="scriptLanguage">groovy</stringProp>
+                    <stringProp name="parameters"></stringProp>
+                    <stringProp name="filename"></stringProp>
+                    <stringProp name="cacheKey">true</stringProp>
+                    <stringProp name="script">Random rn=new Random()
+int randomValue=rn.nextInt(10000)
+while(randomValue==0){
+	randomValue=rn.nextInt(10000)
+	if(randomValue!=0){
+		break;	
+	}
+}
+vars.put(&quot;inboundCreateDelivery&quot;,(1000+randomValue).toString());
+</stringProp>
+                  </JSR223PreProcessor>
+                  <hashTree/>
+                  <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+                    <collectionProp name="Asserion.test_strings">
+                      <stringProp name="-389441739">Successfully Validated Inbound Delivery Request</stringProp>
+                    </collectionProp>
+                    <stringProp name="Assertion.custom_message"></stringProp>
+                    <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                    <boolProp name="Assertion.assume_success">false</boolProp>
+                    <intProp name="Assertion.test_type">16</intProp>
+                  </ResponseAssertion>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get All Items" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="search" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value"></stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">search</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/api/items/all</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                    <stringProp name="JSONPostProcessor.referenceNames">batchedInbound;batchedInboundUom</stringProp>
+                    <stringProp name="JSONPostProcessor.jsonPathExprs">$.items[?(@.batched==false &amp;&amp; @.serialized==false)].item_code;$.items[?(@.batched==false &amp;&amp; @.serialized==false)].base_uom</stringProp>
+                    <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                    <stringProp name="JSONPostProcessor.defaultValues">0;0</stringProp>
+                  </JSONPostProcessor>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get All Items Search" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="search" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">${batchedInbound}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">search</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/api/items/all</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree/>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="New Inbound Request Create" enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">{&#xd;
+	&quot;billtoaddress&quot;: {&#xd;
+		&quot;address1&quot;: &quot;&quot;,&#xd;
+		&quot;address2&quot;: &quot;&quot;,&#xd;
+		&quot;address3&quot;: &quot;&quot;,&#xd;
+		&quot;address4&quot;: &quot;&quot;,&#xd;
+		&quot;careOf&quot;: &quot;&quot;,&#xd;
+		&quot;city&quot;: &quot;&quot;,&#xd;
+		&quot;companyName&quot;: &quot;Load Company&quot;,&#xd;
+		&quot;country&quot;: &quot;&quot;,&#xd;
+		&quot;email&quot;: &quot;loadcompany@mail.com&quot;,&#xd;
+		&quot;extID&quot;: &quot;&quot;,&#xd;
+		&quot;phone&quot;: &quot;&quot;,&#xd;
+		&quot;state&quot;: &quot;&quot;,&#xd;
+		&quot;zipCode&quot;: &quot;&quot;&#xd;
+	},&#xd;
+	&quot;customerid&quot;: &quot;&quot;,&#xd;
+	&quot;customerordernumber&quot;: &quot;&quot;,&#xd;
+	&quot;deliveryoptions&quot;: &quot;&quot;,&#xd;
+	&quot;description&quot;: &quot;&quot;,&#xd;
+	&quot;doc_date&quot;: &quot;${doc_date}&quot;,&#xd;
+	&quot;docstatus&quot;: 0,&#xd;
+	&quot;end_date&quot;: &quot;${start_end}&quot;,&#xd;
+	&quot;extid&quot;: &quot;${inboundCreateDelivery}&quot;,&#xd;
+	&quot;in_request_item&quot;: [&#xd;
+		{&#xd;
+			&quot;batchId&quot;: &quot;&quot;,&#xd;
+			&quot;commodity_code&quot;: &quot;&quot;,&#xd;
+			&quot;consumer_package_code&quot;: &quot;&quot;,&#xd;
+			&quot;ext_part_number&quot;: &quot;&quot;,&#xd;
+			&quot;ext_part_number2&quot;: &quot;&quot;,&#xd;
+			&quot;ext_part_number3&quot;: &quot;&quot;,&#xd;
+			&quot;extid&quot;: &quot;&quot;,&#xd;
+			&quot;gtin&quot;: &quot;&quot;,&#xd;
+			&quot;item_description&quot;: &quot;&quot;,&#xd;
+			&quot;itemcode&quot;: &quot;${batchedInbound}&quot;,&#xd;
+			&quot;name&quot;: &quot;&quot;,&#xd;
+			&quot;quantity&quot;: {&#xd;
+				&quot;content&quot;: ${quantity},&#xd;
+				&quot;uom&quot;: &quot;${batchedInboundUom}&quot;&#xd;
+			},&#xd;
+			&quot;secondary_quantity&quot;: {&#xd;
+				&quot;content&quot;: &quot;&quot;,&#xd;
+				&quot;uom&quot;: &quot;&quot;&#xd;
+			},&#xd;
+			&quot;secondary_uoms&quot;: [],&#xd;
+			&quot;serial_number&quot;: &quot;&quot;,&#xd;
+			&quot;serialized&quot;: false,&#xd;
+			&quot;stocking_uoms&quot;: [&#xd;
+				&quot;EA&quot;&#xd;
+			]&#xd;
+		}&#xd;
+	],&#xd;
+	&quot;indocid&quot;: 1,&#xd;
+	&quot;poid&quot;: &quot;${inboundCreateDelivery}&quot;,&#xd;
+	&quot;released&quot;: false,&#xd;
+	&quot;shiptoaddress&quot;: {&#xd;
+		&quot;address1&quot;: &quot;&quot;,&#xd;
+		&quot;address2&quot;: &quot;&quot;,&#xd;
+		&quot;address3&quot;: &quot;&quot;,&#xd;
+		&quot;address4&quot;: &quot;&quot;,&#xd;
+		&quot;careOf&quot;: &quot;&quot;,&#xd;
+		&quot;city&quot;: &quot;&quot;,&#xd;
+		&quot;companyName&quot;: &quot;Test Company&quot;,&#xd;
+		&quot;country&quot;: &quot;&quot;,&#xd;
+		&quot;email&quot;: &quot;testcompany@mail.com&quot;,&#xd;
+		&quot;extID&quot;: &quot;&quot;,&#xd;
+		&quot;phone&quot;: &quot;&quot;,&#xd;
+		&quot;state&quot;: &quot;&quot;,&#xd;
+		&quot;zipCode&quot;: &quot;&quot;&#xd;
+	},&#xd;
+	&quot;start_date&quot;: &quot;${start_end}&quot;,&#xd;
+	&quot;trackingid&quot;: &quot;&quot;,&#xd;
+	&quot;transportation_type&quot;: null,&#xd;
+	&quot;warehouse_id&quot;: &quot;${warehouseId}&quot;&#xd;
+}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/api/inrequest</stringProp>
+                  <stringProp name="HTTPSampler.method">POST</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+                    <stringProp name="scriptLanguage">groovy</stringProp>
+                    <stringProp name="parameters"></stringProp>
+                    <stringProp name="filename"></stringProp>
+                    <stringProp name="cacheKey">true</stringProp>
+                    <stringProp name="script">Date date =new Date()
+String todays_date=date.format(&quot;yyyy-MM-dd&quot;)
+String todays_start_end=date.format(&quot;yyyy-MM-dd&quot;)+&quot;T&quot;+date.format(&quot;hh:mm:ss&quot;)+&quot;.000Z&quot;
+log.info(todays_date)
+log.info(todays_start_end)
+vars.put(&quot;doc_date&quot;,todays_date)
+vars.put(&quot;start_end&quot;,todays_start_end)
+Random rn=new Random()
+int quantity=rn.nextInt(100)
+vars.put(&quot;quantity&quot;,quantity.toString())</stringProp>
+                  </JSR223PreProcessor>
+                  <hashTree/>
+                </hashTree>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Gets All Inbound Delivery Request by Warehouse  " enabled="true">
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                  <collectionProp name="Arguments.arguments"/>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">/api/inrequest-v2/?warehouse_id=${warehouseId}</stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                  <stringProp name="JSONPostProcessor.referenceNames">totalInbound;poId;customerID;itemCodeInbound</stringProp>
+                  <stringProp name="JSONPostProcessor.jsonPathExprs">$.total;$..poid;$..customerID;$..itemCode</stringProp>
+                  <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+                  <stringProp name="JSONPostProcessor.defaultValues">0;0;0;0</stringProp>
+                </JSONPostProcessor>
+                <hashTree/>
+                <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                  <stringProp name="JSONPostProcessor.referenceNames">inboundReqGetId</stringProp>
+                  <stringProp name="JSONPostProcessor.jsonPathExprs">$.inbound_Delivery_Requests[?(@.docStatus==0)].id</stringProp>
+                  <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+                  <stringProp name="JSONPostProcessor.defaultValues">0</stringProp>
+                </JSONPostProcessor>
+                <hashTree/>
+                <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="script">int temp=Integer.parseInt(vars.get(&quot;totalInbound&quot;))
+Random rn=new Random()
+int [] paginate=[5,10,25,50,100]
+int rand=rn.nextInt(4)
+//log.info(rand.toString())
+vars.put(&quot;limit&quot;,paginate[rand].toString())
+int page=temp/paginate[rand]
+if(page&lt;1){
+	vars.put(&quot;page&quot;,&quot;1&quot;)
+}
+else{
+	int pageNum=rn.nextInt(page);
+	if(pageNum==0){
+		vars.put(&quot;page&quot;,&quot;1&quot;)
+	}
+	else{
+		vars.put(&quot;page&quot;,pageNum.toString())
+	}
+}
+log.info(&quot;Limit: &quot; +vars.get(&quot;limit&quot;))
+log.info(&quot;Total item: &quot;+vars.get(&quot;totalInbound&quot;))
+log.info(&quot;Page: &quot;+ vars.get(&quot;page&quot;))
+</stringProp>
+                </JSR223PostProcessor>
+                <hashTree/>
+                <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+                  <stringProp name="scriptLanguage">groovy</stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="cacheKey">true</stringProp>
+                  <stringProp name="script">vars.put(&quot;inbound_request&quot;,&quot;&quot;);
+vars.put(&quot;inbound_search_request&quot;,&quot;&quot;);
+if(!vars.get(&quot;customerID&quot;).equals(&quot;0&quot;)){
+	if(vars.get(&quot;inbound_request&quot;).length()==0){
+		vars.put(&quot;inbound_request&quot;,&quot;CustomerID&quot;);	
+	}	
+}
+if(!vars.get(&quot;poId&quot;).equals(&quot;0&quot;)){
+	if(vars.get(&quot;inbound_request&quot;).length()&gt;0){
+		vars.put(&quot;inbound_request&quot;,vars.get(&quot;inbound_request&quot;)+&quot;;POID&quot;);
+	}
+	else{
+		vars.put(&quot;inbound_request&quot;,&quot;POID&quot;);
+	}
+}
+if(!vars.get(&quot;itemCodeInbound&quot;).equals(&quot;0&quot;)){
+	if(vars.get(&quot;inbound_request&quot;).length()&gt;0){
+		vars.put(&quot;inbound_request&quot;,vars.get(&quot;inbound_request&quot;)+&quot;;ItemCodeInbound&quot;);
+	}
+	else{
+		vars.put(&quot;inbound_request&quot;,&quot;ItemCodeInbound&quot;);
+	}
+}
+
+//Finalizing the count here
+if(vars.get(&quot;inbound_request&quot;).length()&gt;0){
+	String []check_list=vars.get(&quot;inbound_request&quot;).split(&quot;;&quot;);
+	vars.put(&quot;inbound_requestLoop&quot;,check_list.length.toString());
+	check_list=null;
+}
+else{
+	vars.put(&quot;inbound_requestLoop&quot;,&quot;0&quot;);
+}
+
+//Initialization for further checking in search
+</stringProp>
+                </JSR223PostProcessor>
+                <hashTree/>
+              </hashTree>
+              <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+                <boolProp name="LoopController.continue_forever">true</boolProp>
+                <stringProp name="LoopController.loops">9</stringProp>
+              </LoopController>
+              <hashTree>
+                <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+                  <stringProp name="CounterConfig.start">0</stringProp>
+                  <stringProp name="CounterConfig.end">8</stringProp>
+                  <stringProp name="CounterConfig.incr">1</stringProp>
+                  <stringProp name="CounterConfig.name">status</stringProp>
+                  <stringProp name="CounterConfig.format"></stringProp>
+                  <boolProp name="CounterConfig.per_user">true</boolProp>
+                  <boolProp name="CounterConfig.reset_on_tg_iteration">true</boolProp>
+                </CounterConfig>
+                <hashTree/>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Gets All Inbound Delivery By Status ${status}" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="status" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">${status}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">status</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/api/inrequest-v2/?warehouse_id=${warehouseId}</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree/>
+              </hashTree>
+              <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Controller for Pagination and Limit" enabled="true">
+                <stringProp name="IfController.condition">&quot;${totalInbound}&quot;!=&quot;0&quot;</stringProp>
+                <boolProp name="IfController.evaluateAll">false</boolProp>
+              </IfController>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Gets All Inbound Delivery Request by Warehouse  " enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="page" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">${page}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">page</stringProp>
+                      </elementProp>
+                      <elementProp name="limit" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">${limit}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">limit</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/api/inrequest-v2/?warehouse_id=${warehouseId}</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree/>
+              </hashTree>
+              <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+                <boolProp name="LoopController.continue_forever">true</boolProp>
+                <stringProp name="LoopController.loops">${inbound_requestLoop}</stringProp>
+              </LoopController>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Search Inbound Request by ${searchInbound}" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                    <collectionProp name="Arguments.arguments"/>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/api/inrequest-v2/?warehouse_id=${warehouseId}</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+                    <stringProp name="scriptLanguage">groovy</stringProp>
+                    <stringProp name="parameters"></stringProp>
+                    <stringProp name="filename"></stringProp>
+                    <stringProp name="cacheKey">true</stringProp>
+                    <stringProp name="script">String []temp=[&quot;POID&quot;,&quot;CustomerID&quot;,&quot;ItemCodeInbound&quot;];
+for(int i=0;i&lt;temp.length;i++){
+	if(!vars.get(&quot;inbound_search_request&quot;).contains(temp[i])){
+		if(vars.get(&quot;inbound_request&quot;).contains(temp[i])){
+			vars.put(&quot;searchInbound&quot;,temp[i]);
+			samplerAddArgument(temp[i]);
+			if(vars.get(&quot;inbound_search_request&quot;).length()&gt;0){
+				vars.put(&quot;inbound_search_request&quot;,vars.get(&quot;inbound_search_request&quot;)+&quot;;&quot;+temp[i]);
+			}
+			else{
+				vars.put(&quot;inbound_search_request&quot;,temp[i]);
+			}
+			break;
+		}
+	}
+}
+
+public void samplerAddArgument(String temp){
+	if(temp.equals(&quot;POID&quot;)){
+		sampler.addArgument(&quot;search&quot;,vars.get(&quot;poId&quot;));
+	}
+	else if(temp.equals(&quot;CustomerID&quot;)){
+		sampler.addArgument(&quot;search&quot;,vars.get(&quot;customerID&quot;));
+	}
+	else if(temp.equals(&quot;ItemCodeInbound&quot;)){
+		sampler.addArgument(&quot;search&quot;,vars.get(&quot;itemCodeInbound&quot;));
+	}
+}
+</stringProp>
+                  </JSR223PreProcessor>
+                  <hashTree/>
+                </hashTree>
+              </hashTree>
+              <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Release IDR request" enabled="true"/>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get All Receiving and Production Receiving Zones By Warehouse ID" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                    <collectionProp name="Arguments.arguments"/>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/api/zones/receiving?warehouse_id=${warehouseId}</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree/>
+                <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Controller for Process Release" enabled="true">
+                  <stringProp name="IfController.condition">&quot;${inboundReqGetId}&quot;!=&quot;0&quot;</stringProp>
+                  <boolProp name="IfController.evaluateAll">false</boolProp>
+                </IfController>
+                <hashTree>
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Gets One Inbound Delivery Request" enabled="true">
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                      <collectionProp name="Arguments.arguments"/>
+                    </elementProp>
+                    <stringProp name="HTTPSampler.domain"></stringProp>
+                    <stringProp name="HTTPSampler.port"></stringProp>
+                    <stringProp name="HTTPSampler.protocol"></stringProp>
+                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                    <stringProp name="HTTPSampler.path">/api/inrequest/idr-v2/${inboundReqGetId}</stringProp>
+                    <stringProp name="HTTPSampler.method">GET</stringProp>
+                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  </HTTPSamplerProxy>
+                  <hashTree/>
+                </hashTree>
+              </hashTree>
+              <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Controller for Cancel Request" enabled="false">
+                <stringProp name="IfController.condition">&quot;${inboundReqGetId}&quot;!=&quot;0&quot;</stringProp>
+                <boolProp name="IfController.evaluateAll">false</boolProp>
+              </IfController>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Cancel request" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                    <collectionProp name="Arguments.arguments"/>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/api/inrequest/${inboundReqGetId}</stringProp>
+                  <stringProp name="HTTPSampler.method">DELETE</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Receive Task" enabled="true"/>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get All Receiving and Production Receiving Zones By Warehouse ID" enabled="true">
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                  <collectionProp name="Arguments.arguments"/>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">/api/zones/receiving?warehouse_id=${warehouseId}</stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                  <stringProp name="JSONPostProcessor.referenceNames">zoneSelect</stringProp>
+                  <stringProp name="JSONPostProcessor.jsonPathExprs">$.zones[?(@.id!=null)].id</stringProp>
+                  <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+                  <stringProp name="JSONPostProcessor.defaultValues">0</stringProp>
+                </JSONPostProcessor>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Receive task All" enabled="true">
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                  <collectionProp name="Arguments.arguments"/>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">/api/receive-tasks?warehouse_id=${warehouseId}</stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                  <stringProp name="JSONPostProcessor.referenceNames">receive_task_id;receive_task_assign;receive_task_proceed</stringProp>
+                  <stringProp name="JSONPostProcessor.jsonPathExprs">$.receive_tasks[?(@.id!=null)].id;$.receive_tasks[?(@.id!=null &amp;&amp; @.status==0)].id;$.receive_tasks[?(@.id!=null &amp;&amp; @.status==1)].id</stringProp>
+                  <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+                  <stringProp name="JSONPostProcessor.defaultValues">0;0;0</stringProp>
+                </JSONPostProcessor>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Receive task My Task" enabled="true">
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="category" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">my-tasks</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                      <stringProp name="Argument.name">category</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.protocol"></stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">/api/receive-tasks?warehouse_id=${warehouseId}</stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree/>
+              <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Receive Task Preview If Exists" enabled="true">
+                <stringProp name="IfController.condition">&quot;${receive_task_id}&quot;!=&quot;0&quot;</stringProp>
+                <boolProp name="IfController.evaluateAll">false</boolProp>
+              </IfController>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Receive Task Preview" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="task_id" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">${receive_task_id}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">task_id</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/api/receivetask/preview</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree/>
+              </hashTree>
+              <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Random Select if Receiving Zones Exist" enabled="true">
+                <stringProp name="IfController.condition">&quot;${zoneSelect}&quot;!=&quot;0&quot;</stringProp>
+                <boolProp name="IfController.evaluateAll">false</boolProp>
+              </IfController>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Receive task by Random Receiving Zone" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="zone_id" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">${zoneSelect}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">zone_id</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/api/receive-tasks?warehouse_id=${warehouseId}</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree/>
+              </hashTree>
+              <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+                <boolProp name="LoopController.continue_forever">true</boolProp>
+                <stringProp name="LoopController.loops">4</stringProp>
+              </LoopController>
+              <hashTree>
+                <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="Counter" enabled="true">
+                  <stringProp name="CounterConfig.start">0</stringProp>
+                  <stringProp name="CounterConfig.end">3</stringProp>
+                  <stringProp name="CounterConfig.incr">1</stringProp>
+                  <stringProp name="CounterConfig.name">counterReceiveTask</stringProp>
+                  <stringProp name="CounterConfig.format"></stringProp>
+                  <boolProp name="CounterConfig.per_user">false</boolProp>
+                </CounterConfig>
+                <hashTree/>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Receive task with Status ${counterReceiveTask}" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="status" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">[${counterReceiveTask}]</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">status</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/api/receive-tasks?warehouse_id=${warehouseId}</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree/>
+              </hashTree>
+              <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Assign Users to Receive Tasks" enabled="true">
+                <stringProp name="IfController.condition">&quot;${receive_task_assign}&quot;!=&quot;0&quot;</stringProp>
+                <boolProp name="IfController.evaluateAll">false</boolProp>
+              </IfController>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get All Users" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                    <collectionProp name="Arguments.arguments"/>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/api/users/all/</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                    <stringProp name="JSONPostProcessor.referenceNames">random_user_assign</stringProp>
+                    <stringProp name="JSONPostProcessor.jsonPathExprs">$..user_id</stringProp>
+                    <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+                    <stringProp name="JSONPostProcessor.defaultValues">0</stringProp>
+                  </JSONPostProcessor>
+                  <hashTree/>
+                </hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Task Assign To User " enabled="true">
+                  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">{&#xd;
+	&quot;task_id&quot;: ${receive_task_assign},&#xd;
+	&quot;user_id&quot;:  ${random_user_assign}&#xd;
+}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/api/receivetask/assign</stringProp>
+                  <stringProp name="HTTPSampler.method">PUT</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree/>
+                <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Controller for Unstart Task" enabled="true">
+                  <stringProp name="IfController.condition">&quot;${receive_task_proceed}&quot;!=&quot;0&quot;</stringProp>
+                  <boolProp name="IfController.evaluateAll">false</boolProp>
+                </IfController>
+                <hashTree>
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Unstart Task For Proceeding Task" enabled="true">
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                      <collectionProp name="Arguments.arguments"/>
+                    </elementProp>
+                    <stringProp name="HTTPSampler.domain"></stringProp>
+                    <stringProp name="HTTPSampler.port"></stringProp>
+                    <stringProp name="HTTPSampler.protocol"></stringProp>
+                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                    <stringProp name="HTTPSampler.path">/api/receivetask/deactivate/${receive_task_proceed}</stringProp>
+                    <stringProp name="HTTPSampler.method">DELETE</stringProp>
+                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  </HTTPSamplerProxy>
+                  <hashTree>
+                    <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+                      <collectionProp name="Asserion.test_strings">
+                        <stringProp name="309428621">Receive Task Successfully Unstarted</stringProp>
+                      </collectionProp>
+                      <stringProp name="Assertion.custom_message"></stringProp>
+                      <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                      <boolProp name="Assertion.assume_success">false</boolProp>
+                      <intProp name="Assertion.test_type">16</intProp>
+                    </ResponseAssertion>
+                    <hashTree/>
+                  </hashTree>
+                </hashTree>
+                <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Receive Task from Processing" enabled="true"/>
+                <hashTree>
+                  <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Check If There is In Process Tasks" enabled="true">
+                    <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                      <collectionProp name="Arguments.arguments">
+                        <elementProp name="warehouse_id" elementType="HTTPArgument">
+                          <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                          <stringProp name="Argument.value">${warehouseId}</stringProp>
+                          <stringProp name="Argument.metadata">=</stringProp>
+                          <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                          <stringProp name="Argument.name">warehouse_id</stringProp>
+                        </elementProp>
+                      </collectionProp>
+                    </elementProp>
+                    <stringProp name="HTTPSampler.domain"></stringProp>
+                    <stringProp name="HTTPSampler.port"></stringProp>
+                    <stringProp name="HTTPSampler.protocol"></stringProp>
+                    <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                    <stringProp name="HTTPSampler.path">/api/tasks/has-inprocess</stringProp>
+                    <stringProp name="HTTPSampler.method">GET</stringProp>
+                    <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                    <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                    <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                    <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                    <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                    <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                    <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                  </HTTPSamplerProxy>
+                  <hashTree>
+                    <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                      <stringProp name="JSONPostProcessor.referenceNames">check_process_status</stringProp>
+                      <stringProp name="JSONPostProcessor.jsonPathExprs">$.has_inprocess</stringProp>
+                      <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+                      <stringProp name="JSONPostProcessor.defaultValues">0</stringProp>
+                    </JSONPostProcessor>
+                    <hashTree/>
+                  </hashTree>
+                  <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Controller to check if there is process tasks present" enabled="true">
+                    <stringProp name="IfController.condition">${check_process_status}==false</stringProp>
+                    <boolProp name="IfController.evaluateAll">false</boolProp>
+                  </IfController>
+                  <hashTree>
+                    <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Receive Task Confirmation" enabled="true">
+                      <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                        <collectionProp name="Arguments.arguments">
+                          <elementProp name="id" elementType="HTTPArgument">
+                            <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                            <stringProp name="Argument.value">${receive_task_assign}</stringProp>
+                            <stringProp name="Argument.metadata">=</stringProp>
+                            <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                            <stringProp name="Argument.name">id</stringProp>
+                          </elementProp>
+                        </collectionProp>
+                      </elementProp>
+                      <stringProp name="HTTPSampler.domain"></stringProp>
+                      <stringProp name="HTTPSampler.port"></stringProp>
+                      <stringProp name="HTTPSampler.protocol"></stringProp>
+                      <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                      <stringProp name="HTTPSampler.path">/api/receivetask/confirm/${receive_task_assign}</stringProp>
+                      <stringProp name="HTTPSampler.method">PUT</stringProp>
+                      <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                      <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                      <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                      <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                      <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                      <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                      <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                    </HTTPSamplerProxy>
+                    <hashTree>
+                      <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                        <stringProp name="JSONPostProcessor.referenceNames">receive_task_message</stringProp>
+                        <stringProp name="JSONPostProcessor.jsonPathExprs">$.message</stringProp>
+                        <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+                        <stringProp name="JSONPostProcessor.defaultValues">0</stringProp>
+                      </JSONPostProcessor>
+                      <hashTree/>
+                    </hashTree>
+                    <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Controller if success message is generated during receive task confirmation" enabled="true">
+                      <stringProp name="IfController.condition">&quot;${receive_task_message}&quot;==&quot;Receive Task is now In Process&quot;</stringProp>
+                      <boolProp name="IfController.evaluateAll">false</boolProp>
+                    </IfController>
+                    <hashTree>
+                      <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Receive Task Details" enabled="true">
+                        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                          <collectionProp name="Arguments.arguments"/>
+                        </elementProp>
+                        <stringProp name="HTTPSampler.domain"></stringProp>
+                        <stringProp name="HTTPSampler.port"></stringProp>
+                        <stringProp name="HTTPSampler.protocol"></stringProp>
+                        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                        <stringProp name="HTTPSampler.path">/api/receivetask/${receive_task_assign}</stringProp>
+                        <stringProp name="HTTPSampler.method">GET</stringProp>
+                        <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                        <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                        <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                        <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                        <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                      </HTTPSamplerProxy>
+                      <hashTree/>
+                      <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Line items for Receive Task " enabled="true">
+                        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                          <collectionProp name="Arguments.arguments"/>
+                        </elementProp>
+                        <stringProp name="HTTPSampler.domain"></stringProp>
+                        <stringProp name="HTTPSampler.port"></stringProp>
+                        <stringProp name="HTTPSampler.protocol"></stringProp>
+                        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                        <stringProp name="HTTPSampler.path">/api/receivetask/line-items/${receive_task_assign}</stringProp>
+                        <stringProp name="HTTPSampler.method">GET</stringProp>
+                        <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                        <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                        <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                        <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                        <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                      </HTTPSamplerProxy>
+                      <hashTree>
+                        <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                          <stringProp name="JSONPostProcessor.referenceNames">receiveTaskRegularItemCode;receiveTaskRegularItem</stringProp>
+                          <stringProp name="JSONPostProcessor.jsonPathExprs">$.logistic_lines[?(@.isBatched==false &amp;&amp; @.isSerialized==false &amp;&amp; @.is_catchWeight==null)].itemCode;</stringProp>
+                          <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                          <stringProp name="JSONPostProcessor.defaultValues">0</stringProp>
+                        </JSONPostProcessor>
+                        <hashTree/>
+                      </hashTree>
+                      <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get All License Plates" enabled="true">
+                        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                          <collectionProp name="Arguments.arguments"/>
+                        </elementProp>
+                        <stringProp name="HTTPSampler.domain"></stringProp>
+                        <stringProp name="HTTPSampler.port"></stringProp>
+                        <stringProp name="HTTPSampler.protocol"></stringProp>
+                        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                        <stringProp name="HTTPSampler.path">/api/license-plates/all</stringProp>
+                        <stringProp name="HTTPSampler.method">GET</stringProp>
+                        <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                        <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                        <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                        <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                        <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                      </HTTPSamplerProxy>
+                      <hashTree/>
+                      <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Bins By Parent ID" enabled="true">
+                        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                          <collectionProp name="Arguments.arguments">
+                            <elementProp name="parent_zone_id" elementType="HTTPArgument">
+                              <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                              <stringProp name="Argument.value">${zoneSelect}</stringProp>
+                              <stringProp name="Argument.metadata">=</stringProp>
+                              <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                              <stringProp name="Argument.name">parent_zone_id</stringProp>
+                            </elementProp>
+                          </collectionProp>
+                        </elementProp>
+                        <stringProp name="HTTPSampler.domain"></stringProp>
+                        <stringProp name="HTTPSampler.port"></stringProp>
+                        <stringProp name="HTTPSampler.protocol"></stringProp>
+                        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                        <stringProp name="HTTPSampler.path">/api/bins</stringProp>
+                        <stringProp name="HTTPSampler.method">GET</stringProp>
+                        <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                        <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                        <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                        <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                        <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                      </HTTPSamplerProxy>
+                      <hashTree>
+                        <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                          <stringProp name="JSONPostProcessor.referenceNames">captureInboundBin;captureInboundBinId</stringProp>
+                          <stringProp name="JSONPostProcessor.jsonPathExprs">$.bins[?(@.id!=null)].barcode;$.bins[?(@.id!=null)].id</stringProp>
+                          <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+                          <stringProp name="JSONPostProcessor.defaultValues">0;0</stringProp>
+                        </JSONPostProcessor>
+                        <hashTree/>
+                      </hashTree>
+                      <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Controller to proceed if bin exists in zone" enabled="true">
+                        <stringProp name="IfController.condition">&quot;${captureInboundBin}&quot;!=&quot;0&quot;</stringProp>
+                        <boolProp name="IfController.evaluateAll">false</boolProp>
+                      </IfController>
+                      <hashTree>
+                        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Validate bin in warehouse" enabled="true">
+                          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                            <collectionProp name="Arguments.arguments">
+                              <elementProp name="warehouse_id" elementType="HTTPArgument">
+                                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                                <stringProp name="Argument.value">${warehouseId}</stringProp>
+                                <stringProp name="Argument.metadata">=</stringProp>
+                                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                                <stringProp name="Argument.name">warehouse_id</stringProp>
+                              </elementProp>
+                              <elementProp name="zone_id" elementType="HTTPArgument">
+                                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                                <stringProp name="Argument.value">${zoneSelect}</stringProp>
+                                <stringProp name="Argument.metadata">=</stringProp>
+                                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                                <stringProp name="Argument.name">zone_id</stringProp>
+                              </elementProp>
+                              <elementProp name="bin_barcode" elementType="HTTPArgument">
+                                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                                <stringProp name="Argument.value">${captureInboundBin}</stringProp>
+                                <stringProp name="Argument.metadata">=</stringProp>
+                                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                                <stringProp name="Argument.name">bin_barcode</stringProp>
+                              </elementProp>
+                            </collectionProp>
+                          </elementProp>
+                          <stringProp name="HTTPSampler.domain"></stringProp>
+                          <stringProp name="HTTPSampler.port"></stringProp>
+                          <stringProp name="HTTPSampler.protocol"></stringProp>
+                          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                          <stringProp name="HTTPSampler.path">/api/receivetask/validate-bin</stringProp>
+                          <stringProp name="HTTPSampler.method">GET</stringProp>
+                          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                        </HTTPSamplerProxy>
+                        <hashTree/>
+                        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Receive task by task id " enabled="true">
+                          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                            <collectionProp name="Arguments.arguments"/>
+                          </elementProp>
+                          <stringProp name="HTTPSampler.domain"></stringProp>
+                          <stringProp name="HTTPSampler.port"></stringProp>
+                          <stringProp name="HTTPSampler.protocol"></stringProp>
+                          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                          <stringProp name="HTTPSampler.path">/api/receivetask/${receive_task_assign}</stringProp>
+                          <stringProp name="HTTPSampler.method">GET</stringProp>
+                          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                        </HTTPSamplerProxy>
+                        <hashTree/>
+                        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Receive Line Items" enabled="true">
+                          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                            <collectionProp name="Arguments.arguments"/>
+                          </elementProp>
+                          <stringProp name="HTTPSampler.domain"></stringProp>
+                          <stringProp name="HTTPSampler.port"></stringProp>
+                          <stringProp name="HTTPSampler.protocol"></stringProp>
+                          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                          <stringProp name="HTTPSampler.path">/api/receivetask/line-items/${receive_task_assign}</stringProp>
+                          <stringProp name="HTTPSampler.method">GET</stringProp>
+                          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                        </HTTPSamplerProxy>
+                        <hashTree/>
+                        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get All License Plates by Logistic Units Bin" enabled="true">
+                          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                            <collectionProp name="Arguments.arguments">
+                              <elementProp name="logistic_unit_id" elementType="HTTPArgument">
+                                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                                <stringProp name="Argument.value">${captureInboundBinId}</stringProp>
+                                <stringProp name="Argument.metadata">=</stringProp>
+                                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                                <stringProp name="Argument.name">logistic_unit_id</stringProp>
+                              </elementProp>
+                            </collectionProp>
+                          </elementProp>
+                          <stringProp name="HTTPSampler.domain"></stringProp>
+                          <stringProp name="HTTPSampler.port"></stringProp>
+                          <stringProp name="HTTPSampler.protocol"></stringProp>
+                          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                          <stringProp name="HTTPSampler.path">/api/license-plates/all</stringProp>
+                          <stringProp name="HTTPSampler.method">GET</stringProp>
+                          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                        </HTTPSamplerProxy>
+                        <hashTree/>
+                        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inventory Addition Confirmation" enabled="false">
+                          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                            <collectionProp name="Arguments.arguments">
+                              <elementProp name="" elementType="HTTPArgument">
+                                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                                <stringProp name="Argument.value">{&#xd;
+	&quot;items&quot;: [&#xd;
+		{&#xd;
+			&quot;batch_id&quot;: &quot;&quot;,&#xd;
+			&quot;expiration_date&quot;: &quot;&quot;,&#xd;
+			&quot;item_code&quot;: &quot;100012&quot;,&#xd;
+			&quot;logistic_unit_id&quot;: &quot;f2b06579-53f4-4200-a4e4-bd987b2abb34&quot;,&#xd;
+			&quot;lot&quot;: null,&#xd;
+			&quot;manufacture_serial&quot;: null,&#xd;
+			&quot;production_date&quot;: &quot;&quot;,&#xd;
+			&quot;qty&quot;: {&#xd;
+				&quot;content&quot;: 1,&#xd;
+				&quot;uom&quot;: &quot;EA&quot;&#xd;
+			},&#xd;
+			&quot;secondary_qty&quot;: {&#xd;
+				&quot;content&quot;: null,&#xd;
+				&quot;uom&quot;: null&#xd;
+			},&#xd;
+			&quot;serial_number&quot;: &quot;&quot;,&#xd;
+			&quot;task_id&quot;: ${receive_task_assign}&#xd;
+		}&#xd;
+	],&#xd;
+	&quot;warehouse_id&quot;: &quot;${warehouseId}&quot;&#xd;
+}</stringProp>
+                                <stringProp name="Argument.metadata">=</stringProp>
+                              </elementProp>
+                            </collectionProp>
+                          </elementProp>
+                          <stringProp name="HTTPSampler.domain"></stringProp>
+                          <stringProp name="HTTPSampler.port"></stringProp>
+                          <stringProp name="HTTPSampler.protocol"></stringProp>
+                          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                          <stringProp name="HTTPSampler.path">/api/receivetask/lineitem/confirm</stringProp>
+                          <stringProp name="HTTPSampler.method">GET</stringProp>
+                          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                        </HTTPSamplerProxy>
+                        <hashTree>
+                          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="false">
+                            <stringProp name="scriptLanguage">groovy</stringProp>
+                            <stringProp name="parameters"></stringProp>
+                            <stringProp name="filename"></stringProp>
+                            <stringProp name="cacheKey">true</stringProp>
+                            <stringProp name="script">if(){
+	
+}
+</stringProp>
+                          </JSR223PreProcessor>
+                          <hashTree/>
+                        </hashTree>
+                        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Line Confirms of Receive Tasks" enabled="false">
+                          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                            <collectionProp name="Arguments.arguments">
+                              <elementProp name="task_id" elementType="HTTPArgument">
+                                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                                <stringProp name="Argument.value">${receive_task_assign}</stringProp>
+                                <stringProp name="Argument.metadata">=</stringProp>
+                                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                                <stringProp name="Argument.name">task_id</stringProp>
+                              </elementProp>
+                              <elementProp name="logistic_unit_id" elementType="HTTPArgument">
+                                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                                <stringProp name="Argument.value">${captureInboundBinId}</stringProp>
+                                <stringProp name="Argument.metadata">=</stringProp>
+                                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                                <stringProp name="Argument.name">logistic_unit_id</stringProp>
+                              </elementProp>
+                            </collectionProp>
+                          </elementProp>
+                          <stringProp name="HTTPSampler.domain"></stringProp>
+                          <stringProp name="HTTPSampler.port"></stringProp>
+                          <stringProp name="HTTPSampler.protocol"></stringProp>
+                          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                          <stringProp name="HTTPSampler.path">/api/receivetask/line-confirms</stringProp>
+                          <stringProp name="HTTPSampler.method">GET</stringProp>
+                          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                        </HTTPSamplerProxy>
+                        <hashTree/>
+                        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Receive Line Items" enabled="false">
+                          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                            <collectionProp name="Arguments.arguments"/>
+                          </elementProp>
+                          <stringProp name="HTTPSampler.domain"></stringProp>
+                          <stringProp name="HTTPSampler.port"></stringProp>
+                          <stringProp name="HTTPSampler.protocol"></stringProp>
+                          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                          <stringProp name="HTTPSampler.path">/api/receivetask/line-items/${receive_task_assign}</stringProp>
+                          <stringProp name="HTTPSampler.method">GET</stringProp>
+                          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                        </HTTPSamplerProxy>
+                        <hashTree/>
+                        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Receive Task Completion" enabled="false">
+                          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                            <collectionProp name="Arguments.arguments">
+                              <elementProp name="" elementType="HTTPArgument">
+                                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                                <stringProp name="Argument.value">{&#xd;
+	&quot;Id&quot;: ${receive_task_assign},&#xd;
+	&quot;Items&quot;: [&#xd;
+		{&#xd;
+			&quot;batch_id&quot;: &quot;&quot;,&#xd;
+			&quot;expiration_date&quot;: &quot;&quot;,&#xd;
+			&quot;item_code&quot;: &quot;100012&quot;,&#xd;
+			&quot;logistic_unit_id&quot;: &quot;${captureInboundBinId}&quot;,&#xd;
+			&quot;lot&quot;: null,&#xd;
+			&quot;manufacture_serial&quot;: null,&#xd;
+			&quot;production_date&quot;: &quot;&quot;,&#xd;
+			&quot;qty&quot;: {&#xd;
+				&quot;content&quot;: 1,&#xd;
+				&quot;uom&quot;: &quot;EA&quot;&#xd;
+			},&#xd;
+			&quot;secondary_qty&quot;: {&#xd;
+				&quot;content&quot;: null,&#xd;
+				&quot;uom&quot;: null&#xd;
+			},&#xd;
+			&quot;serial_number&quot;: &quot;&quot;,&#xd;
+			&quot;task_id&quot;: ${receive_task_assign}&#xd;
+		}&#xd;
+	]&#xd;
+}</stringProp>
+                                <stringProp name="Argument.metadata">=</stringProp>
+                              </elementProp>
+                            </collectionProp>
+                          </elementProp>
+                          <stringProp name="HTTPSampler.domain"></stringProp>
+                          <stringProp name="HTTPSampler.port"></stringProp>
+                          <stringProp name="HTTPSampler.protocol"></stringProp>
+                          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                          <stringProp name="HTTPSampler.path">/api/receivetask/completeV2</stringProp>
+                          <stringProp name="HTTPSampler.method">GET</stringProp>
+                          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                        </HTTPSamplerProxy>
+                        <hashTree/>
+                      </hashTree>
+                    </hashTree>
+                  </hashTree>
+                </hashTree>
+              </hashTree>
+            </hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Return Request" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
@@ -1612,7 +2912,7 @@ sampler.addArgument(&quot;item_code&quot;,vars.get(&quot;itemCode&quot;));
             </hashTree>
             <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Inventory" enabled="true"/>
             <hashTree>
-              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inventory Get All" enabled="true">
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inventory Get Default" enabled="true">
                 <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
                   <collectionProp name="Arguments.arguments"/>
                 </elementProp>
@@ -1632,25 +2932,65 @@ sampler.addArgument(&quot;item_code&quot;,vars.get(&quot;itemCode&quot;));
               </HTTPSamplerProxy>
               <hashTree>
                 <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
-                  <stringProp name="JSONPostProcessor.referenceNames">total_inventory</stringProp>
+                  <stringProp name="JSONPostProcessor.referenceNames">totalLimit</stringProp>
                   <stringProp name="JSONPostProcessor.jsonPathExprs">$.total</stringProp>
                   <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
                   <stringProp name="JSONPostProcessor.defaultValues">0</stringProp>
                 </JSONPostProcessor>
                 <hashTree/>
-                <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
-                  <stringProp name="JSONPostProcessor.referenceNames">regular_inventory;serial_inventory;batch_inventory;batch_inventory_catch;serial_inventory_catch</stringProp>
-                  <stringProp name="JSONPostProcessor.jsonPathExprs">$.inventories[?(@.batched==false &amp;&amp; @.serialized==false)].item_code;$.inventories[?(@.batched==false &amp;&amp; @.serialized==true)].item_code;$.inventories[?(@.batched==true &amp;&amp; @.serialized==false)].item_code;$.inventories[?(@.batched==true &amp;&amp; @.serialized==false &amp;&amp; @.catch_weight!=null)].item_code;$.inventories[?(@.batched==false &amp;&amp; @.serialized==true &amp;&amp; @.catch_weight!=null)].item_code</stringProp>
-                  <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
-                  <stringProp name="JSONPostProcessor.defaultValues">0;0;0;0;0</stringProp>
-                </JSONPostProcessor>
-                <hashTree/>
-                <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
-                  <stringProp name="scriptLanguage">groovy</stringProp>
-                  <stringProp name="parameters"></stringProp>
-                  <stringProp name="filename"></stringProp>
-                  <stringProp name="cacheKey">true</stringProp>
-                  <stringProp name="script">int temp=Integer.parseInt(vars.get(&quot;total_inventory&quot;))
+              </hashTree>
+              <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Inventory Get All" enabled="true">
+                <stringProp name="IfController.condition">&quot;${totalLimit}&quot;!=&quot;0&quot;</stringProp>
+                <boolProp name="IfController.evaluateAll">false</boolProp>
+              </IfController>
+              <hashTree>
+                <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Inventory Get All" enabled="true">
+                  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                    <collectionProp name="Arguments.arguments">
+                      <elementProp name="limit" elementType="HTTPArgument">
+                        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                        <stringProp name="Argument.value">${totalLimit}</stringProp>
+                        <stringProp name="Argument.metadata">=</stringProp>
+                        <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                        <stringProp name="Argument.name">limit</stringProp>
+                      </elementProp>
+                    </collectionProp>
+                  </elementProp>
+                  <stringProp name="HTTPSampler.domain"></stringProp>
+                  <stringProp name="HTTPSampler.port"></stringProp>
+                  <stringProp name="HTTPSampler.protocol"></stringProp>
+                  <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                  <stringProp name="HTTPSampler.path">/api/inventory/items?warehouse_id=${warehouseId}</stringProp>
+                  <stringProp name="HTTPSampler.method">GET</stringProp>
+                  <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                  <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                  <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+                  <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                  <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                </HTTPSamplerProxy>
+                <hashTree>
+                  <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                    <stringProp name="JSONPostProcessor.referenceNames">total_inventory</stringProp>
+                    <stringProp name="JSONPostProcessor.jsonPathExprs">$.total</stringProp>
+                    <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+                    <stringProp name="JSONPostProcessor.defaultValues">0</stringProp>
+                  </JSONPostProcessor>
+                  <hashTree/>
+                  <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                    <stringProp name="JSONPostProcessor.referenceNames">regular_inventory;serial_inventory;batch_inventory;batch_inventory_catch;serial_inventory_catch</stringProp>
+                    <stringProp name="JSONPostProcessor.jsonPathExprs">$.inventories[?(@.batched==false &amp;&amp; @.serialized==false &amp;&amp; @.catch_weight==null)].item_code;$.inventories[?(@.batched==false &amp;&amp; @.serialized==true &amp;&amp; @.catch_weight==null)].item_code;$.inventories[?(@.batched==true &amp;&amp; @.serialized==false &amp;&amp; @.catch_weight==null)].item_code;$.inventories[?(@.batched==true &amp;&amp; @.serialized==false &amp;&amp; @.catch_weight==true)].item_code;$.inventories[?(@.batched==false &amp;&amp; @.serialized==true &amp;&amp; @.catch_weight==true)].item_code</stringProp>
+                    <stringProp name="JSONPostProcessor.match_numbers">0</stringProp>
+                    <stringProp name="JSONPostProcessor.defaultValues">0;0;0;0;0</stringProp>
+                  </JSONPostProcessor>
+                  <hashTree/>
+                  <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+                    <stringProp name="scriptLanguage">groovy</stringProp>
+                    <stringProp name="parameters"></stringProp>
+                    <stringProp name="filename"></stringProp>
+                    <stringProp name="cacheKey">true</stringProp>
+                    <stringProp name="script">int temp=Integer.parseInt(vars.get(&quot;total_inventory&quot;))
 Random rn=new Random()
 int [] paginate=[5,10,25,50,100]
 int rand=rn.nextInt(4)
@@ -1674,14 +3014,14 @@ log.info(&quot;Total item: &quot;+vars.get(&quot;filtered&quot;))
 log.info(&quot;Page: &quot;+ vars.get(&quot;page&quot;))
 
 </stringProp>
-                </JSR223PostProcessor>
-                <hashTree/>
-                <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
-                  <stringProp name="scriptLanguage">groovy</stringProp>
-                  <stringProp name="parameters"></stringProp>
-                  <stringProp name="filename"></stringProp>
-                  <stringProp name="cacheKey">true</stringProp>
-                  <stringProp name="script">vars.put(&quot;inventory_list&quot;,&quot;&quot;);
+                  </JSR223PostProcessor>
+                  <hashTree/>
+                  <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+                    <stringProp name="scriptLanguage">groovy</stringProp>
+                    <stringProp name="parameters"></stringProp>
+                    <stringProp name="filename"></stringProp>
+                    <stringProp name="cacheKey">true</stringProp>
+                    <stringProp name="script">vars.put(&quot;inventory_list&quot;,&quot;&quot;);
 vars.put(&quot;inventory_search&quot;,&quot;&quot;);
 if(!vars.get(&quot;regular_inventory&quot;).equals(&quot;0&quot;)){
 	if(vars.get(&quot;inventory_list&quot;).length()==0){
@@ -1736,8 +3076,9 @@ else{
 
 //Initialization for further checking in search
 </stringProp>
-                </JSR223PostProcessor>
-                <hashTree/>
+                  </JSR223PostProcessor>
+                  <hashTree/>
+                </hashTree>
               </hashTree>
               <IfController guiclass="IfControllerPanel" testclass="IfController" testname="Inventory Paginate and Limit" enabled="true">
                 <stringProp name="IfController.condition">&quot;${total_inventory}&quot;!=&quot;0&quot;</stringProp>
@@ -2691,7 +4032,7 @@ log.info(&quot;Page: &quot;+ vars.get(&quot;page&quot;))
                   <collectionProp name="Arguments.arguments">
                     <elementProp name="bin_id" elementType="HTTPArgument">
                       <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                      <stringProp name="Argument.value">${binId}</stringProp>
+                      <stringProp name="Argument.value">36933584-a456-491c-a326-7214575cdacd</stringProp>
                       <stringProp name="Argument.metadata">=</stringProp>
                       <boolProp name="HTTPArgument.use_equals">true</boolProp>
                       <stringProp name="Argument.name">bin_id</stringProp>
@@ -2722,7 +4063,7 @@ log.info(&quot;Page: &quot;+ vars.get(&quot;page&quot;))
                 <hashTree/>
                 <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
                   <stringProp name="JSONPostProcessor.referenceNames">logisticUnits</stringProp>
-                  <stringProp name="JSONPostProcessor.jsonPathExprs">$..logistic_units[?(@.id!=null)]</stringProp>
+                  <stringProp name="JSONPostProcessor.jsonPathExprs">$..logistic_units[?(@.id!=null &amp;&amp; @.inventories!=null)]</stringProp>
                   <stringProp name="JSONPostProcessor.match_numbers">-1</stringProp>
                   <stringProp name="JSONPostProcessor.defaultValues">0</stringProp>
                 </JSONPostProcessor>
@@ -2737,7 +4078,7 @@ log.info(&quot;Page: &quot;+ vars.get(&quot;page&quot;))
 		for(int i=1;i&lt;=Integer.parseInt(vars.get(&quot;logisticUnits_matchNr&quot;));i++){
 			def idMatch=new JsonSlurper().parse(vars.get(&quot;logisticUnits_&quot;+i)).id
 			if(idMatch.toString().equals(vars.get(&quot;lpItem&quot;))){
-				def	
+				 
 			}
 		}
 	}
